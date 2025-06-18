@@ -161,3 +161,69 @@
   border: 2px solid #e5e7eb;
   margin-bottom: 1rem;
 }
+@media (max-width: 640px) {
+  .resume {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .resume h2 {
+    font-size: 1rem;
+  }
+
+  .layout3 h1 {
+    font-size: 1.5rem;
+  }
+
+  .layout3 h2 {
+    font-size: 1rem;
+  }
+
+  .layout3 p, .layout3 li {
+    font-size: 0.875rem;
+  }
+
+  .layout3 img.profile {
+    width: 80px;
+    height: 80px;
+  }
+}
+.input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 640px) {
+  .btn-green,
+  .btn-purple,
+  .btn-blue {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media print {
+  body {
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resume {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 1in;
+    width: auto;
+    max-width: 100%;
+  }
+
+  #resumeForm,
+  #loading,
+  .btn,
+  select,
+  #layoutSelector,
+  #fontSelector,
+  .output-actions {
+    display: none !important;
+  }
+}
