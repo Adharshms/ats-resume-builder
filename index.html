@@ -49,6 +49,20 @@
       box-sizing: border-box;
       background: white;
     }
+    #resumeDisplay {
+  font-size: 11pt;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  font-family: 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#resumeDisplay {
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
   </style>
 </head>
 <body class="bg-gradient-to-tr from-indigo-100 via-white to-indigo-50 min-h-screen p-6">
@@ -81,7 +95,7 @@
         <h2 class="text-3xl font-bold text-gray-800">Generated Resume</h2>
         <div class="flex gap-2">
           <button onclick="window.print()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Download PDF</button>
-          <button onclick="downloadAsJPG()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">Download JPG</button>
+          
         </div>
       </div>
       <div class="border rounded-2xl bg-white shadow-lg font-sans fade-in text-gray-900 space-y-10" id="resumeDisplay">
@@ -156,21 +170,26 @@
     });
 
     function downloadAsJPG() {
-      const resume = document.getElementById("resumeDisplay");
+  const resume = document.getElementById("resumeDisplay");
 
-      html2canvas(resume, {
-        scale: 3,
-        useCORS: true,
-        backgroundColor: "#ffffff"
-      }).then((canvas) => {
-        const link = document.createElement("a");
-        link.download = "resume.jpg";
-        link.href = canvas.toDataURL("image/jpeg", 1.0);
-        link.click();
-      }).catch((err) => {
-        alert("Error generating image: " + err.message);
-      });
-    }
+  // A4 size at 300 DPI ≈ 2480 x 3508 pixels
+  html2canvas(resume, {
+    scale: 4, // increases internal resolution
+    width: 2480,
+    height: 3508,
+    useCORS: true,
+    backgroundColor: "#ffffff"
+  }).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "resume-highres.jpg";
+    link.href = canvas.toDataURL("image/jpeg", 1.0);
+    link.click();
+  }).catch((err) => {
+    alert("Error generating image: " + err.message);
+  });
+}
+
+
   </script>
 </body>
 </html>
